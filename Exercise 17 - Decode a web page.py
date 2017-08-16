@@ -7,7 +7,8 @@ G. L. Roberts
 http://www.practicepython.org/exercise/2014/06/06/17-decode-a-web-page.html
 
 Uses beautifulsoup to parse NYTimes website and print out the top 10 headlines 
-and their summaries"""
+and their summaries
+"""
 
 import requests
 from bs4 import BeautifulSoup
