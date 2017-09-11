@@ -37,6 +37,7 @@ def main():
             print(str(bulls) + " bulls and " + str(cows) + " cows")
     
 def guessNumber():
+    """ Gets user input and makes sure it is valid"""
     while True:
         try:
             if sys.version_info[0] < 3:

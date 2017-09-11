@@ -20,6 +20,7 @@ def main():
     print("Your password is: "+password)
     
 def getInt(string):
+    """ Get a valid password length """
     while True:
         try:
             userNo=int(input(string))
@@ -35,6 +36,8 @@ def getInt(string):
     return userNo  
 
 def passwordGen(strength, n):
+    """Generate the choice of letters based on the password strength, then
+    randomly pick letters for the password. """
     password=''
     if strength=='weak':
         choice=string.ascii_lowercase

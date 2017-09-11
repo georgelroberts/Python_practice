@@ -19,6 +19,7 @@ def main():
         print("Number is not a prime." )
     
 def getInt(string):
+    """ Get a valid number from the user"""
     while True:
         try:
             userNo=int(input(string))
@@ -29,6 +30,7 @@ def getInt(string):
     return userNo
 
 def divisors(initNumber):
+    """ Return a list of the valid devisors of a number using a for loop """
     divisorList=[1]
     
     for i in range(2,math.ceil(initNumber/2)+1):

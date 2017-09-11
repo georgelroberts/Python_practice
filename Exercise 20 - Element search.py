@@ -18,6 +18,7 @@ def main():
     print(binarySearch(sortedList,10))
     
 def binarySearch(sortedList,n):
+    """ Implements the binary search """
     lowVal=0
     highVal=len(sortedList)-1
     while lowVal<=highVal:

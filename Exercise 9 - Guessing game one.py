@@ -28,6 +28,7 @@ def main():
     print("You were successful in " + str(numberOfGuesses) + " guesses!")
 
 def userGuess():
+    """ User input to guess between 1 and 9 """
     while True:
         try:
             guess=input("Guess the number (or type 'exit' to leave): ")

@@ -14,6 +14,7 @@ def main():
     print(evenNumbers(a))
 
 def evenNumbers(inputList):
+    """ List comprehension to return list of even numbers """
     return [i for i in inputList if i%2==0]
     
         

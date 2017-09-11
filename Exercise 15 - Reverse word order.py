@@ -14,6 +14,7 @@ def main():
     print(reverseWordOrder(testString))
     
 def reverseWordOrder(testString):
+    """ Reverse string by creating a new string """
     testString=testString.split(" ")
     newString=[]
     for i in range(len(testString)):

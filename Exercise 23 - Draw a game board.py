@@ -9,9 +9,10 @@ Creates an nxm game board for tic-tac toe.
 """
 
 def main():
-    printBoard(10)
+    printBoard(3)
     
 def printBoard(n,m=0):
+    """ Draws a blank playing board for tic-tac-toe """
     #If just one argument, create nxn grid
     if m==0:
         m=n

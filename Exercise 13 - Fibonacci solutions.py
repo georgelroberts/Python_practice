@@ -22,6 +22,7 @@ def main():
         
 
 def getInt(string):
+    """ Get a positive integer from the user """
     while True:
         try:
             userNo=int(input(string))

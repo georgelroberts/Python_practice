@@ -47,6 +47,7 @@ def main():
           
     
 def getUserMove(player):
+    """ Get user input for rock paper or scissors """
     while True:
         try:
             playerMove=input("Player" + player + ": ").lower()
