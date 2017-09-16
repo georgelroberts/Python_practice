@@ -1,0 +1,76 @@
+<CustomButton@Button>:
+    font_size: 32
+
+<CalcGridLayout>:
+    id: coraMicroscope
+    lastThreeRes: entry
+    allResults: entry2
+    fileLocation: entry3
+    rows: 6
+    padding: 10
+    spacing: 10
+
+    BoxLayout:
+        TextInput:
+            size_hint_x:0.3
+            id: entry
+            multiline: False
+
+        TextInput:
+            id: entry2
+            multiline: False
+
+        
+    BoxLayout:
+        spacing: 10
+        CustomButton:
+            text: "1/8"
+            on_press: coraMicroscope.addToList(1)
+        CustomButton:
+            text: "2/8"
+            on_press: coraMicroscope.addToList(2)
+        CustomButton:
+            text: "3/8"
+            on_press: coraMicroscope.addToList(3)
+
+    BoxLayout:
+        spacing: 10
+        CustomButton:
+            text: "4/8"
+            on_press: coraMicroscope.addToList(4)
+        CustomButton:
+            text: "5/8"
+            on_press: coraMicroscope.addToList(5)
+        CustomButton:
+            text: "6/8"
+            on_press: coraMicroscope.addToList(6)
+
+    BoxLayout:
+        spacing: 10
+        CustomButton:
+            text: "7/8"
+            on_press: coraMicroscope.addToList(7)
+        CustomButton:
+            text: "8/8"
+            on_press: coraMicroscope.addToList(8)
+        CustomButton:
+            text: "Delete\nlast"
+            on_press: coraMicroscope.deleteLastResult()
+
+
+    BoxLayout:
+        spacing: 10
+        CustomButton:
+            text: "Display all results"
+            on_press: coraMicroscope.showAllResults()
+
+    BoxLayout:
+        size_hint_y:0.3
+        spacing:0
+        TextInput:
+            id: entry3
+            font_size: 12
+            multiline: False
+
+            
+
