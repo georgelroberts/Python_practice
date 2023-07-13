@@ -21,8 +21,7 @@ def main():
 
 def removDupSets(testList):
     """ Remove duplicates easily using sets """
-    newList=list(set(testList))
-    return newList
+    return list(set(testList))
 
 def removDupLoops(testList):
     """ Remove duplicates by checking if each item does not appear twice """

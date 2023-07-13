@@ -11,16 +11,16 @@ import sys
 
 def main():
     userNo = storeNumber()
-    
+
     print("Now tell me if my guess is too high (h), low (l) or is correct (c)")
-    
+
     guess=50
     response='NULL'
     high=100
     low=0
-    
+
     while response !='c':
-        print("Guess: " + str(guess))
+        print(f"Guess: {str(guess)}")
         response=getResponse()
         if guess==userNo:
             if response=='c':
@@ -37,10 +37,7 @@ def main():
             low=guess
             guess+=int((high-low)/2.0)
         elif response=='c':
-            if guess==userNo:
-                print("Hurrah, you have done it!")
-            else:
-                print("I believe the user got a little confused!")
+            print("I believe the user got a little confused!")
             break
     
 def storeNumber():
@@ -54,13 +51,12 @@ def storeNumber():
         except ValueError:
             print("Please enter a valid number")
             continue
-       
-        if guess<0 or guess>100:
-            print("Please make sure your number is between 0 and 100")
-            continue
-        else:
+
+        if guess >= 0 and guess <= 100:
             break
-        
+
+        print("Please make sure your number is between 0 and 100")
+        continue
     return guess
 
 def getResponse():
@@ -74,13 +70,12 @@ def getResponse():
         except ValueError:
             print("Please enter a valid response")
             continue
-        
-        if response not in ['h','l','c','e']:
-            print("Please give me a correct response, or type 'e' to end")
-            continue
-        else:
+
+        if response in ['h', 'l', 'c', 'e']:
             break
-        
+
+        print("Please give me a correct response, or type 'e' to end")
+        continue
     return response
 
 

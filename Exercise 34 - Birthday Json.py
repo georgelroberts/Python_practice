@@ -19,23 +19,21 @@ import json
 def main():
     with open("birthdays.json","r") as f:
         birthdayDict=json.load(f)
-    
+
     print("Welcome to the birthday dictionary. We know the birthdays of: ")
     printAllDictKeys(birthdayDict)
     while True:
         name=inputName()
         if name=="quit":
             break
-        else:
-            print(birthdayDict.get(name,"We don't have that name yet."))
-            if name not in birthdayDict:
-                birthday=inputBirthday()
-                if birthday=="quit":
-                    break
-                else:
-                    birthdayDict[name]=birthday
-                    with open("birthdays.json","w") as f:
-                        json.dump(birthdayDict,f)
+        print(birthdayDict.get(name,"We don't have that name yet."))
+        if name not in birthdayDict:
+            birthday=inputBirthday()
+            if birthday=="quit":
+                break
+            birthdayDict[name]=birthday
+            with open("birthdays.json","w") as f:
+                json.dump(birthdayDict,f)
 
 def printAllDictKeys(birthdayDict):
     for key in birthdayDict:
@@ -70,15 +68,18 @@ def inputBirthday():
         	print("Please enter a valid birthday")
         	continue
         if (
-            len(birthday) != 10 or birthday[2] != '/' or birthday[5] != '/'
-            or int(birthday[0:2])<1 or int(birthday[0:2])>31
-            or int(birthday[3:5])>12 or int(birthday[3:5])<0
-            ):
-            print("Please enter a valid birthday as dd/mm/yyyy")
-            continue
-        else:
+            len(birthday) == 10
+            and birthday[2] == '/'
+            and birthday[5] == '/'
+            and int(birthday[:2]) >= 1
+            and int(birthday[:2]) <= 31
+            and int(birthday[3:5]) <= 12
+            and int(birthday[3:5]) >= 0
+        ):
             break
-        
+
+        print("Please enter a valid birthday as dd/mm/yyyy")
+        continue
     return birthday.lower()
 
 if __name__ == "__main__":

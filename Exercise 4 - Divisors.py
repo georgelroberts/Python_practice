@@ -13,11 +13,12 @@ import math
 def main():
     initNumber=int(input("Please enter a number: "));
     divisorList=[1]
-    
-    for i in range(2,math.ceil(initNumber/2)+1):
-        if initNumber%i==0:
-            divisorList.append(i)
-            
+
+    divisorList.extend(
+        i
+        for i in range(2, math.ceil(initNumber / 2) + 1)
+        if initNumber % i == 0
+    )
     print(divisorList)
     
 if __name__ == "__main__":

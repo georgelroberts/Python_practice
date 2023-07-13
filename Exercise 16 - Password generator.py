@@ -17,7 +17,7 @@ def main():
     pasStrength=pasStrength.lower()
     pasLength=getInt("Please enter your password length: ")
     password=passwordGen(pasStrength,pasLength)
-    print("Your password is: "+password)
+    print(f"Your password is: {password}")
     
 def getInt(string):
     """ Get a valid password length """
@@ -27,26 +27,25 @@ def getInt(string):
         except ValueError:
             print("Sorry, try again please")
             continue
-        
-        if userNo <= 0:
-            print("Sorry, try again please")
-            continue
-        else:
+
+        if userNo > 0:
             break
+        print("Sorry, try again please")
+        continue
     return userNo  
 
 def passwordGen(strength, n):
     """Generate the choice of letters based on the password strength, then
     randomly pick letters for the password. """
     password=''
-    if strength=='weak':
-        choice=string.ascii_lowercase
-    elif strength=='medium':
+    if strength == 'medium':
         choice=string.ascii_letters
-    elif strength=='strong':
+    elif strength == 'strong':
         choice=string.printable
-    for i in range(n):
-            password = password + random.choice(choice)
+    elif strength == 'weak':
+        choice=string.ascii_lowercase
+    for _ in range(n):
+        password = password + random.choice(choice)
     return password
 
         

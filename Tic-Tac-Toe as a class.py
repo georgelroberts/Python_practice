@@ -19,12 +19,12 @@ def main():
         board.getPlay(currentPlayer)
         board.printBoard()
         winner=board.checkWin()
-        
+
         if winner==3:
             print("The game ended in a draw, try again" )
             break
-        elif winner==1 or winner==2:
-            print("The game is over! Player " + str(winner) + " won the game. Well done!")
+        elif winner in [1, 2]:
+            print(f"The game is over! Player {str(winner)} won the game. Well done!")
             break
         i+=1
             
@@ -64,10 +64,10 @@ class Board(object):
     def printBoard(self):
         """ Prints an aesthetically pleasing game board """
         print(" ---"*self.boardSize)
-        
+
         for i in range(self.boardSize):
             for j in range(self.boardSize):
-                print("| "+ str(self.playBoard[i,j])+" ",end='') # Suppress newline on print
+                print(f"| {str(self.playBoard[i, j])} ", end='')
             print("|")
             print(" ---"*self.boardSize)
     
@@ -78,16 +78,20 @@ class Board(object):
         while True:
             try:
                 if sys.version_info[0] < 3:
-                    response=raw_input("Player " + str(player) +", please enter your play in the form X,Y: ")
+                    response = raw_input(
+                        f"Player {str(player)}, please enter your play in the form X,Y: "
+                    )
                 else:
-                    response=input("Player " + str(player) +", please enter your play in the form X,Y: ")
+                    response = input(
+                        f"Player {str(player)}, please enter your play in the form X,Y: "
+                    )
             except ValueError:
                 print("Please enter a valid response")
                 continue
-            
+
             response.strip().split(",")
             responseTuple=(int(response[0]),int(response[2]))
-            
+
             if responseTuple[0]>self.boardSize or responseTuple[0]<1:
                 print("Please enter a valid x coordinate")
                 continue
@@ -101,10 +105,7 @@ class Board(object):
                 if self.playBoard[playY,playX]!=0:
                     print("That space is filled already, try again!")
                 else:
-                    if player == 1:
-                        self.playBoard[playY,playX]=1
-                    else:
-                        self.playBoard[playY,playX]=2
+                    self.playBoard[playY,playX] = 1 if player == 1 else 2
                 break
 
 

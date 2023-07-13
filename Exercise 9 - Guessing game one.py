@@ -25,7 +25,7 @@ def main():
             print("Too high!")
         elif guess<randomNumber:
             print("Too low!")
-    print("You were successful in " + str(numberOfGuesses) + " guesses!")
+    print(f"You were successful in {str(numberOfGuesses)} guesses!")
 
 def userGuess():
     """ User input to guess between 1 and 9 """
@@ -39,11 +39,10 @@ def userGuess():
         except ValueError:
             print("Sorry, I didn't understand that.")
             continue
-        if guess>10 or guess<1:
-            print("Guess between 1 and 9 please\n")
-            continue
-        else:
+        if guess <= 10 and guess >= 1:
             break
+        print("Guess between 1 and 9 please\n")
+        continue
     return guess
         
 if __name__ == "__main__":

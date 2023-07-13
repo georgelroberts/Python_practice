@@ -25,14 +25,13 @@ def main():
         name=inputName()
         if name=="quit":
             break
-        else:
-            print(birthdayDict.get(name,"We don't have that name yet."))
-            if name not in birthdayDict:
-                birthday=inputBirthday()
-                if birthday=="quit":
-                    break
-                else:
-                    birthdayDict[name]=birthday
+        print(birthdayDict.get(name,"We don't have that name yet."))
+        if name not in birthdayDict:
+            birthday=inputBirthday()
+            if birthday=="quit":
+                break
+            else:
+                birthdayDict[name]=birthday
     
 def printAllDictKeys(birthdayDict):
     for key in birthdayDict:

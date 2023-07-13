@@ -37,19 +37,19 @@ def playHangman(wordToGuess):
 
     guesses='' # Blank string to store all guesses
     incorrectGuesses=0
-    
+
     print("Welcome to hangman, you have 6 guesses!"+"\n"+"_ "*len(wordToGuess))
     while True:
         guess=guessLetter()
         if guess in guesses:
-            print("You've guessed that before!")    
+            print("You've guessed that before!")
         if guess not in wordToGuess:
             incorrectGuesses+=1
             if incorrectGuesses>=6:
-                print("You lost! The word was "+wordToGuess)
+                print(f"You lost! The word was {wordToGuess}")
                 break
-            print("Incorrect! You have "+str(6-incorrectGuesses)+" guesses remaining")
-            
+            print(f"Incorrect! You have {str(6 - incorrectGuesses)} guesses remaining")
+
         else:
             guesses+=guess
             progress=printProgress(wordToGuess,guesses)
@@ -68,34 +68,30 @@ def guessLetter():
         except ValueError:
         	print("Please enter a valid letter")
         	continue
-        if len(guess)!=1 or not guess.isalpha():
-        	print("Please make sure you input a single letter")
-        	continue
-        else:
-        	break
-        
+        if len(guess) == 1 and guess.isalpha():
+            break
+
+        print("Please make sure you input a single letter")
+        continue
     return guess.upper()
 
 def printProgress(wordToGuess,guesses):
     """ Prints the word with underscores denoting an unguessed letter """
     revealed=("_ ,"*len(wordToGuess)).split(",")[:-1]
-    
+
     for char in guesses:
         position=-1 #Initialise variable for finding matching characters in the word
         if char in wordToGuess:
             while True:
                 position=wordToGuess.find(char,position+1)
                 if position>=0:
-                    revealed[position]=char+" "
+                    revealed[position] = f"{char} "
                 else:
                     break
-            
+
     print("".join(revealed))
-    
-    if "_ " not in revealed:
-        return 0
-    else:
-        return 1     
+
+    return 0 if "_ " not in revealed else 1     
     
 
 if __name__ == "__main__":
