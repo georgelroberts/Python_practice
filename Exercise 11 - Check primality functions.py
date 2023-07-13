@@ -32,11 +32,12 @@ def getInt(string):
 def divisors(initNumber):
     """ Return a list of the valid devisors of a number using a for loop """
     divisorList=[1]
-    
-    for i in range(2,math.ceil(initNumber/2)+1):
-        if initNumber%i==0:
-            divisorList.append(i)
-            
+
+    divisorList.extend(
+        i
+        for i in range(2, math.ceil(initNumber / 2) + 1)
+        if initNumber % i == 0
+    )
     return divisorList
 
         

@@ -27,20 +27,15 @@ def main():
                 print("That space is filled already, try again!")
             else:
                 break
-            
-        if i%2+1 == 1:
-            #Player 1
-            board[playX][playY]=1
-        else:
-            #Player 2
-            board[playX][playY]=2
+
+        board[playX][playY] = 1 if i%2 == 0 else 2
         printBoard(board,boardSize)
-        
+
         i+=1
-        
+
         winner=checkWin(board)
         if winner!=0:
-            print("The game is over! Player " + str(winner) + " won the game. Well done!")
+            print(f"The game is over! Player {str(winner)} won the game. Well done!")
             break
         elif 0 not in [elem for sublist in board for elem in sublist]:
             # From https://stackoverflow.com/questions/11963711/what-is-the-most-efficient-way-to-search-nested-lists-in-python
@@ -52,10 +47,7 @@ def drawPlayBoard(x,y=0):
     board"""
     if y==0:
         y=x
-    # Solution from https://stackoverflow.com/questions/13157961/2d-array-of-zeros
-    initBoard=[[0]*y for _ in range(x)]
-    
-    return initBoard
+    return [[0]*y for _ in range(x)]
     
 
 def getPlay(player, x,y=0):
@@ -63,20 +55,24 @@ def getPlay(player, x,y=0):
     answer"""
     if y==0:
         y=x
-        
+
     while True:
         try:
             if sys.version_info[0] < 3:
-                response=raw_input("Player " + str(player) +", please enter your play in the form X,Y: ")
+                response = raw_input(
+                    f"Player {str(player)}, please enter your play in the form X,Y: "
+                )
             else:
-                response=input("Player " + str(player) +", please enter your play in the form X,Y: ")
+                response = input(
+                    f"Player {str(player)}, please enter your play in the form X,Y: "
+                )
         except ValueError:
             print("Please enter a valid response")
             continue
-        
+
         response.strip().split(",")
         responseTuple=(int(response[0]),int(response[2]))
-        
+
         if responseTuple[0]>x or responseTuple[0]<1:
             print("Please enter a valid x coordinate")
             continue
@@ -85,7 +81,7 @@ def getPlay(player, x,y=0):
             continue
         else:
             break
-        
+
     return responseTuple
 
 def checkWin(board):
@@ -112,10 +108,10 @@ def printBoard(board,boardSize):
     """ Prints an aesthetically pleasing game board """
     board=np.array(board)
     print(" ---"*boardSize)
-    
+
     for i in range(boardSize):
         for j in range(boardSize):
-            print("| "+ str(board[j,i])+" ",end='') # Suppress newline on print
+            print(f"| {str(board[j, i])} ", end='')
         print("|")
         print(" ---"*boardSize)
     

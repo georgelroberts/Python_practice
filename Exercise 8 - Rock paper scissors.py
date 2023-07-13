@@ -18,18 +18,18 @@ def main():
         print("Please enter 'rock', 'paper' or 'scissors': ")
         player1=getUserMove("1")
         player2=getUserMove("2")
-        
+
         if player1==player2:
             print("It's a draw!")
             player1Points=player1Points+1
             player2Points=player2Points+1
-            
+
         elif ((player1=='rock' and player2=='scissors') or
               (player1=='paper' and player2=='rock') or
               (player1=='scissors' and player2=='paper')):
             print("Player 1 wins!")
             player1Points=player1Points+1
-            
+
         else:
             print("\nPlayer 2 wins!")
             player2Points=player2Points+1
@@ -37,29 +37,28 @@ def main():
         playAgain = input("Do you want to play again? (Y/N): ").lower()
         if playAgain=='n':
             break
-        
+
     if player1Points==player2Points:
-        print("It was a draw"+ player1Points + "all!")
+        print(f"It was a draw{player1Points}all!")
     elif player1Points>player2Points:
-        print("Player 1 wins " + str(player1Points) + " to " + str(player2Points))
+        print(f"Player 1 wins {str(player1Points)} to {str(player2Points)}")
     else:
-        print("Player 2 wins " + str(player2Points) + " to " +str(player1Points))
+        print(f"Player 2 wins {str(player2Points)} to {str(player1Points)}")
           
     
 def getUserMove(player):
     """ Get user input for rock paper or scissors """
     while True:
         try:
-            playerMove=input("Player" + player + ": ").lower()
+            playerMove = input(f"Player{player}: ").lower()
         except ValueError:
             print("Sorry, I didn't understand that.")
             continue
-    
-        if playerMove not in ['rock','paper','scissors']:
-            print("Sorry, I didn't understand that.")
-            continue
-        else:
+
+        if playerMove in ['rock', 'paper', 'scissors']:
             break
+        print("Sorry, I didn't understand that.")
+        continue
     return playerMove
     
         

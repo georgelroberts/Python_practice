@@ -16,10 +16,7 @@ def main():
 def reverseWordOrder(testString):
     """ Reverse string by creating a new string """
     testString=testString.split(" ")
-    newString=[]
-    for i in range(len(testString)):
-        newString.append(testString[-i-1])
-    return newString    
+    return [testString[-i-1] for i in range(len(testString))]    
         
         
 if __name__ == "__main__":

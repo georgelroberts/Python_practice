@@ -16,15 +16,15 @@ def printBoard(n,m=0):
     #If just one argument, create nxn grid
     if m==0:
         m=n
-    
+
     sideString=''
     vertString=''
-    for i in range(n):
+    for _ in range(n):
         sideString+=' ----'
         vertString+='|    '
     vertString+='|'
-    
-    for i in range(m):
+
+    for _ in range(m):
         print(sideString+'\n'+vertString)
     print(sideString)
         

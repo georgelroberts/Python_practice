@@ -8,8 +8,8 @@ I have done this using sets (because intersections are easy with sets)
 """
 
 def main():
-    primeNumbers = set(line.strip() for line in open('primeNumbers.txt'))
-    happyNumbers = set(line.strip() for line in open('happyNumbers.txt'))
+    primeNumbers = {line.strip() for line in open('primeNumbers.txt')}
+    happyNumbers = {line.strip() for line in open('happyNumbers.txt')}
 
     intersect=primeNumbers & happyNumbers
     print(sorted(intersect,key=int))

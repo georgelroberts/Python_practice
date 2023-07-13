@@ -18,23 +18,23 @@ import string
 def main():
     num2Guess=''.join(random.sample(string.digits,4))
     print(num2Guess)
-    
+
     while True:
         guess=guessNumber()
         cows=0
         bulls=0
-        
+
         for i in range(4):
             if guess[i]==num2Guess[i]:
                 bulls=bulls+1
             elif guess[i] in num2Guess:
                 cows=cows+1
-                
+
         if bulls==4:
             print("Well done, you win!")
             break
         else:
-            print(str(bulls) + " bulls and " + str(cows) + " cows")
+            print(f"{str(bulls)} bulls and {str(cows)} cows")
     
 def guessNumber():
     """ Gets user input and makes sure it is valid"""
@@ -47,13 +47,16 @@ def guessNumber():
         except ValueError:
            print("Please enter a valid number")
            continue
-       
-        if len(set(guess))!=4 or guess.isdigit()==False or len(guess)!=4:
-            print("Please make sure your number has four unique digits")
-            continue
-        else:
+
+        if (
+            len(set(guess)) == 4
+            and guess.isdigit() != False
+            and len(guess) == 4
+        ):
             break
-        
+
+        print("Please make sure your number has four unique digits")
+        continue
     return guess
 
 if __name__=="__main__":

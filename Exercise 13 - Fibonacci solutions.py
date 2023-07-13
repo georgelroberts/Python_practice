@@ -12,13 +12,10 @@ Calculate n fibonacci numbers
 def main():
     n=getInt("Please enter a number: ")
     fibArray=[1]
-    if n==1:
-        print(fibArray)
-    else:
+    if n != 1:
         fibArray.append(1)
-        for i in range(n-2):
-            fibArray.append(fibArray[i]+fibArray[i+1])
-        print(fibArray)
+        fibArray.extend(fibArray[i]+fibArray[i+1] for i in range(n-2))
+    print(fibArray)
         
 
 def getInt(string):
@@ -29,12 +26,11 @@ def getInt(string):
         except ValueError:
             print("Sorry, try again please")
             continue
-        
-        if userNo < 0:
-            print("Sorry, try again please")
-            continue
-        else:
+
+        if userNo >= 0:
             break
+        print("Sorry, try again please")
+        continue
     return userNo
         
 if __name__ == "__main__":
